@@ -6,6 +6,7 @@ import {
     Card,
     FormControl,
     FormLabel,
+    Input,
     FormErrorMessage,
     FormHelperText,
     NumberInput,
@@ -18,7 +19,10 @@ import {
     Heading,
     CardBody,
     Button,
-    VStack
+    VStack,
+    InputGroup,
+    InputRightAddon,
+    Center
 } from '@chakra-ui/react'
 
 export function action(params: any) {
@@ -27,8 +31,40 @@ export function action(params: any) {
     return redirect('/');
 }
 
-const quimica = [
-    'Urea', 'Creatina', 'Fosfatasa Alcalina', 'GPT', 'Proteinas', 'Albúmina', 'Fosforo'
+interface Test {
+    label: string,
+    units: string,
+}
+
+const quimica: Test[] = [
+    {
+        label: 'Urea',
+        units: 'mg/dL'
+    },
+    {
+        label: 'Creatina',
+        units: 'mg/dL'
+    },
+    {
+        label: 'Fosfatasa Alcalina',
+        units: 'ui/L'
+    },
+    {
+        label: 'GPT',
+        units: 'ui/L'
+    },
+    {
+        label: 'Proteinas',
+        units: 'g/dL'
+    },
+    {
+        label: 'Albúmina',
+        units: 'g/dL'
+    },
+    {
+        label: 'Fosforo',
+        units: 'mg/dL'
+    }
 ]
 
 export default function LabTests() {
@@ -41,23 +77,24 @@ export default function LabTests() {
             </CardHeader>
             <CardBody>
                 <Form method='post'>
-                    <VStack>
+                    <VStack spacing={5}>
                     {
                         quimica.map(entry => {
-                            const label = entry;
-                            const nameSplit = entry.toLowerCase().split(' ');
+                            const label = entry.label;
+                            const nameSplit = label.toLowerCase().split(' ');
                             const name = nameSplit.join('-');
 
                             return (
-                                <FormControl key={entry}>
+                                <FormControl key={name}>
                                     <FormLabel htmlFor={name}>{label}</FormLabel>
-                                    <NumberInput precision={2} step={0.01}>
-                                        <NumberInputField name={name}/>
-                                        <NumberInputStepper>
-                                            <NumberIncrementStepper />
-                                            <NumberDecrementStepper />
-                                        </NumberInputStepper>
-                                    </NumberInput>
+                                    <InputGroup>
+                                        <Input type='number' name={name} />
+                                        <InputRightAddon w='12%'>
+                                            <Center w='100%'>
+                                                { entry.units }
+                                            </Center>
+                                        </InputRightAddon>
+                                    </InputGroup>
                                 </FormControl>
                             )
                         })
