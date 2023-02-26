@@ -24,7 +24,12 @@ import {
     VStack,
     InputGroup,
     InputRightAddon,
-    Center
+    Center,
+    Tabs,
+    TabList,
+    Tab,
+    TabPanels,
+    TabPanel
 } from '@chakra-ui/react'
 
 export function action(params: any) {
@@ -71,6 +76,26 @@ export default function LabTests() {
     const patient = useLoaderData() as string;
 
     return (
-        <TestForm test={quimica} patient={patient} />
+        <Card bg={useColorModeValue('white', 'gray.800')} w='60%' shadow='lg'>
+            <CardHeader>
+                <Heading>{patient}</Heading>
+            </CardHeader>
+            <CardBody>
+                <Tabs variant='enclosed'>
+                    <TabList>
+                        <Tab>Quimica</Tab>
+                        <Tab>Two</Tab>
+                    </TabList>
+                    <TabPanels>
+                        <TabPanel>
+                            <TestForm test={quimica} patient={patient} />
+                        </TabPanel>
+                        <TabPanel>
+                        <p>two!</p>
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
+            </CardBody>
+        </Card>
     )
 }
