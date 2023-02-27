@@ -29,7 +29,8 @@ import {
     TabList,
     Tab,
     TabPanels,
-    TabPanel
+    TabPanel,
+    Box
 } from '@chakra-ui/react'
 
 export function action(params: any) {
@@ -75,27 +76,51 @@ const quimica: Test = {
 export default function LabTests() {
     const patient = useLoaderData() as string;
 
+    // return (
+    //     <Card bg={useColorModeValue('white', 'gray.800')} w='60%' shadow='lg'>
+    //         <CardHeader>
+    //             <Heading>{patient}</Heading>
+    //         </CardHeader>
+    //         <CardBody>
+    //             <Tabs variant='enclosed'>
+    //                 <TabList>
+    //                     <Tab>Quimica</Tab>
+    //                     <Tab>Two</Tab>
+    //                 </TabList>
+    //                 <TabPanels>
+    //                     <TabPanel>
+    //                         <TestForm test={quimica} patient={patient} />
+    //                     </TabPanel>
+    //                     <TabPanel>
+    //                     <p>two!</p>
+    //                     </TabPanel>
+    //                 </TabPanels>
+    //             </Tabs>
+    //         </CardBody>
+    //     </Card>
+    // )
+
     return (
-        <Card bg={useColorModeValue('white', 'gray.800')} w='60%' shadow='lg'>
-            <CardHeader>
-                <Heading>{patient}</Heading>
-            </CardHeader>
-            <CardBody>
-                <Tabs variant='enclosed'>
-                    <TabList>
-                        <Tab>Quimica</Tab>
-                        <Tab>Two</Tab>
-                    </TabList>
-                    <TabPanels>
-                        <TabPanel>
-                            <TestForm test={quimica} patient={patient} />
-                        </TabPanel>
-                        <TabPanel>
-                        <p>two!</p>
-                        </TabPanel>
-                    </TabPanels>
-                </Tabs>
-            </CardBody>
-        </Card>
+        <Box w='100%' shadow='none'>
+            <Box m={2}>
+                <Heading as='h6'>{patient}</Heading>
+            </Box>
+            <Tabs>
+                <TabList>
+                    <Tab>Quimica</Tab>
+                    <Tab>Two</Tab>
+                </TabList>
+                <TabPanels>
+                    <TabPanel>
+                        <Center>
+                            <TestForm test={quimica} patient={patient} width='70%' />
+                        </Center>
+                    </TabPanel>
+                    <TabPanel>
+                    <p>two!</p>
+                    </TabPanel>
+                </TabPanels>
+            </Tabs>
+        </Box>
     )
 }

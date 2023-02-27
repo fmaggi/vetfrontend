@@ -1,19 +1,16 @@
 import { Form } from 'react-router-dom'
 
 import {
-    Card,
     FormControl,
     FormLabel,
     Input,
     useColorModeValue,
-    CardHeader,
-    Heading,
-    CardBody,
     Button,
     VStack,
     InputGroup,
     InputRightAddon,
-    Center
+    Center,
+    Box
 } from '@chakra-ui/react'
 
 
@@ -29,11 +26,15 @@ export type Test = {
 
 export interface TestFormProps {
     test: Test,
-    patient: string
+    patient: string,
+    width?: string
 }
 
-export default function TestForm({ test, patient}: TestFormProps) {
+export default function TestForm({ test, patient, width }: TestFormProps) {
+    const w = width ? width : '70%'
+
     return (
+        <Box w={w}>
         <Form method='post'>
             <VStack spacing={5}>
             {
@@ -61,5 +62,6 @@ export default function TestForm({ test, patient}: TestFormProps) {
                 <Button type='submit' size='lg' colorScheme='blue'>Listo</Button>
             </VStack>
         </Form>
+        </Box>
     )
 }

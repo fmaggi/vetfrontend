@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box, Flex, useColorModeValue } from "@chakra-ui/react"
+import { Box, Flex, useColorModeValue, Center } from "@chakra-ui/react"
 
 import Sidebar from '../components/sidebar'
 import { Outlet } from "react-router-dom"
@@ -13,14 +13,13 @@ export default function Root() {
                 <Box flex='1' minW='0'>
                     <Box px={5} mx='auto'>
                         <Flex>
-                            <Box
+                            <Center
                                 minW='0'
                                 flex='auto'
-                                px={{ base: '4', sm: '6', xl: '8' }}
-                                pt='10'
+                                pt='5'
                                 pb='10'>
                                     <Outlet />
-                            </Box>
+                            </Center>
                         </Flex>
                     </Box>
                 </Box>
