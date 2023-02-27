@@ -8,11 +8,6 @@ export async function loader() {
     return patients;
 }
 
-export async function patientLoader(args: any) {
-    const patient = args.params.patient;
-    return patient;
-}
-
 export default function Patients() {
     const patients = useLoaderData() as string[];
     const bg = useColorModeValue('white', 'gray.800')

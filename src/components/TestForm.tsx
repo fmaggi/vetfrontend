@@ -1,5 +1,7 @@
 import { Form } from 'react-router-dom'
 
+import { Test, testLabelToName } from '../data/tests'
+
 import {
     FormControl,
     FormLabel,
@@ -12,17 +14,6 @@ import {
     Center,
     Box
 } from '@chakra-ui/react'
-
-
-export interface TestField {
-    label: string,
-    units: string
-}
-
-export type Test = {
-    name: string,
-    fields: TestField[]
-}
 
 export interface TestFormProps {
     test: Test,
@@ -37,17 +28,18 @@ export default function TestForm({ test, patient, width }: TestFormProps) {
         <Box w={w}>
         <Form method='post'>
             <VStack spacing={5}>
+                <Input type='text' defaultValue={test.name} name='testName' hidden/>
+                <Input type='text' defaultValue={patient} name='patient' hidden/>
             {
                 test.fields.map(entry => {
                     const label = entry.label;
-                    const nameSplit = label.toLowerCase().split(' ');
-                    const name = nameSplit.join('-');
+                    const name = testLabelToName(label);
 
                     return (
-                        <FormControl key={name}>
+                        <FormControl key={name} isRequired>
                             <FormLabel htmlFor={name}>{label}</FormLabel>
                             <InputGroup>
-                                <Input type='number' name={name} />
+                                <Input type='number' name={name}/>
                                 <InputRightAddon w='12%'>
                                     <Center w='100%'>
                                         { entry.units }

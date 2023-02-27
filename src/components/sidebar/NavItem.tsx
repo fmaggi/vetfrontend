@@ -8,10 +8,9 @@ interface NavItemProps {
 }
 
 export default function NavItem({ children, to }: NavItemProps) {
-    const location = useLocation();
-    const path = location.pathname;
+    const { pathname } = useLocation();
 
-    const isActive = to === '/' ? path === '/' : path.startsWith(to);
+    const isActive = to === '/' ? pathname === '/' : pathname.startsWith(to);
 
     return (
         <Button

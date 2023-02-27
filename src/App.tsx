@@ -1,10 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 import Root from './routes/Root'
-import LabTests, { action as LabPost} from './routes/LabTests';
-import Patients, { loader as loadPatients, patientLoader} from './routes/Patients';
+import LabTests, { action as savePdf, loader as loadPatient } from './routes/LabTests';
+import Patients, { loader as loadPatients} from './routes/Patients';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -22,8 +20,8 @@ const router = createBrowserRouter([
       {
         path: 'labs/:patient',
         element: <LabTests />,
-        action: LabPost,
-        loader: patientLoader
+        loader: loadPatient,
+        action: savePdf
       },
       {
         path: 'pacientes',

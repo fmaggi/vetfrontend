@@ -1,29 +1,13 @@
 import React from 'react'
 
-import { Form, redirect, useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 
-import TestForm, { Test } from '../components/TestForm';
+import TestForm from '../components/TestForm';
+
+import tests from '../data/tests';
 
 import {
-    Card,
-    FormControl,
-    FormLabel,
-    Input,
-    FormErrorMessage,
-    FormHelperText,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
-    useColorModeValue,
-    CardHeader,
     Heading,
-    CardBody,
-    Button,
-    VStack,
-    InputGroup,
-    InputRightAddon,
     Center,
     Tabs,
     TabList,
@@ -32,73 +16,28 @@ import {
     TabPanel,
     Box
 } from '@chakra-ui/react'
+import saveTestToPDF from '../utils/saveTestToPdf';
 
-export function action(params: any) {
-    const request = params.request;
-    console.log(request);
-    return redirect('/');
+interface ActionLoaderProps {
+    request?: any,
+    params?: any
 }
 
-const quimica: Test = {
-    name: 'Quimica',
-    fields: [
-        {
-            label: 'Urea',
-            units: 'mg/dL'
-        },
-        {
-            label: 'Creatina',
-            units: 'mg/dL'
-        },
-        {
-            label: 'Fosfatasa Alcalina',
-            units: 'ui/L'
-        },
-        {
-            label: 'GPT',
-            units: 'ui/L'
-        },
-        {
-            label: 'Proteinas',
-            units: 'g/dL'
-        },
-        {
-            label: 'Albúmina',
-            units: 'g/dL'
-        },
-        {
-            label: 'Fosforo',
-            units: 'mg/dL'
-        }
-    ]
+export async function loader({ params} : ActionLoaderProps) {
+    const patient = params.patient;
+    return patient;
+}
+
+export async function action({ request }: ActionLoaderProps) {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    const { testName, patient, ...results } = data;
+    saveTestToPDF(testName, patient, results, 'test.pdf');
+    return null;
 }
 
 export default function LabTests() {
     const patient = useLoaderData() as string;
-
-    // return (
-    //     <Card bg={useColorModeValue('white', 'gray.800')} w='60%' shadow='lg'>
-    //         <CardHeader>
-    //             <Heading>{patient}</Heading>
-    //         </CardHeader>
-    //         <CardBody>
-    //             <Tabs variant='enclosed'>
-    //                 <TabList>
-    //                     <Tab>Quimica</Tab>
-    //                     <Tab>Two</Tab>
-    //                 </TabList>
-    //                 <TabPanels>
-    //                     <TabPanel>
-    //                         <TestForm test={quimica} patient={patient} />
-    //                     </TabPanel>
-    //                     <TabPanel>
-    //                     <p>two!</p>
-    //                     </TabPanel>
-    //                 </TabPanels>
-    //             </Tabs>
-    //         </CardBody>
-    //     </Card>
-    // )
 
     return (
         <Box w='100%' shadow='none'>
@@ -107,18 +46,21 @@ export default function LabTests() {
             </Box>
             <Tabs>
                 <TabList>
-                    <Tab>Quimica</Tab>
-                    <Tab>Two</Tab>
+                {
+                    tests.map(test => (<Tab key={test.name}>{test.name}</Tab>))
+                }
                 </TabList>
                 <TabPanels>
-                    <TabPanel>
-                        <Center>
-                            <TestForm test={quimica} patient={patient} width='70%' />
-                        </Center>
-                    </TabPanel>
-                    <TabPanel>
-                    <p>two!</p>
-                    </TabPanel>
+                {
+                    tests.map(test => {
+                        return (
+                            <TabPanel key={test.name}>
+                                <Center>
+                                    <TestForm test={test} patient={patient} width='70%' />
+                                </Center>
+                            </TabPanel>
+                    )})
+                }
                 </TabPanels>
             </Tabs>
         </Box>
