@@ -1,6 +1,6 @@
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import tests, { Test, testLabelToName } from '../data/tests';
+import tests, { Test } from '../data/tests';
 
 import setFont, { fontName } from '../res/fonts/LiberationSans-Regular-normal';
 

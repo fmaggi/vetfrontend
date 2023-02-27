@@ -31,7 +31,7 @@ export class Test {
         const errors: string[] = [];
         const testResults: TestResult[] = [];
         this.fields.forEach(field => {
-            const name = testLabelToName(field.label)
+            const name = Test.LabelToName(field.label)
             const result = results[name]
 
             if (!result) {
@@ -52,6 +52,12 @@ export class Test {
         })
 
         return [testResults, errors];
+    }
+
+    static LabelToName(label: string): string {
+        const nameSplit = label.toLowerCase().split(' ');
+        const name = nameSplit.join('-');
+        return name;
     }
 }
 
@@ -116,11 +122,5 @@ const hematologia = new Test('Hematología', [
 const tests: Test[] = [
     quimica, hematologia
 ]
-
-export function testLabelToName(label: string): string {
-    const nameSplit = label.toLowerCase().split(' ');
-    const name = nameSplit.join('-');
-    return name;
-}
 
 export default tests;

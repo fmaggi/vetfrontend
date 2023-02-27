@@ -1,6 +1,6 @@
 import { Form } from 'react-router-dom'
 
-import { Test, testLabelToName } from '../data/tests'
+import { Test } from '../data/tests'
 
 import {
     FormControl,
@@ -33,7 +33,7 @@ export default function TestForm({ test, patient, width }: TestFormProps) {
             {
                 test.fields.map(entry => {
                     const label = entry.label;
-                    const name = testLabelToName(label);
+                    const name = Test.LabelToName(label);
 
                     return (
                         <FormControl key={name} isRequired>
