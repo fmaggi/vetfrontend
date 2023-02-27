@@ -11,12 +11,10 @@ function findTest(test: string): Test | null {
     return null;
 }
 
-
-export default function saveTestToPDF(testName: string, patient: string, results: any, filename: string) {
+export default function saveTestToPDF(testName: string, patient: string, results: any, filename: string): string[] | null {
     const test = findTest(testName);
     if (!test) {
-        console.log('Invalid test', testName);
-        return;
+        return [`Invalid test ${testName}`];
     }
 
     const doc = new jsPDF();
@@ -24,11 +22,19 @@ export default function saveTestToPDF(testName: string, patient: string, results
     const tableColumn = [testName, 'Resultado', 'Unidades', 'Valores Normales'];
     const tableRows: string[][] = [];
 
+    var errors: string[] = []
+
     const fields = test.fields;
     fields.map(field => {
         const name = testLabelToName(field.label)
+        const result = results[name]
+
+        if (!result) {
+            errors.push(`Results for ${testName} didn't contain ${field.label}`)
+        }
+
         const row: string[] = [
-            field.label, results[name], field.units, 'TODO'
+            field.label, result, field.units, 'TODO'
         ];
 
         tableRows.push(row);
@@ -42,6 +48,8 @@ export default function saveTestToPDF(testName: string, patient: string, results
         body: tableRows
     });
 
-    doc.save(`${filename}.pdf`);
+    doc.save(filename);
+
+    return errors.length === 0 ? null : errors;
 };
 

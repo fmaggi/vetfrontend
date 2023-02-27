@@ -32,13 +32,17 @@ export async function action({ request }: ActionLoaderProps) {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     const { testName, patient, ...results } = data;
-    saveTestToPDF(testName, patient, results, 'test.pdf');
+    const errs = saveTestToPDF(testName, patient, results, 'test.pdf');
+    if (errs) {
+        alert('Error creando el pdf');
+        console.log(errs);
+    }
+
     return null;
 }
 
 export default function LabTests() {
     const patient = useLoaderData() as string;
-
     return (
         <Box w='100%' shadow='none'>
             <Box m={2}>
