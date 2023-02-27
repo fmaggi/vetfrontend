@@ -2,6 +2,8 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import tests, { Test, testLabelToName } from '../data/tests';
 
+import setFont, { fontName } from '../res/fonts/LiberationSans-Regular-normal';
+
 function findTest(test: string): Test | null {
     for (let t of tests) {
         if (test === t.name) {
@@ -18,31 +20,15 @@ export default function saveTestToPDF(testName: string, patient: string, results
     }
 
     const doc = new jsPDF();
+    setFont(doc);
 
     const tableColumn = [testName, 'Resultado', 'Unidades', 'Valores Normales'];
-    const tableRows: string[][] = [];
 
-    var errors: string[] = []
-
-    const fields = test.fields;
-    fields.map(field => {
-        const name = testLabelToName(field.label)
-        const result = results[name]
-
-        if (!result) {
-            errors.push(`Results for ${testName} didn't contain ${field.label}`)
-        }
-
-        const row: string[] = [
-            field.label, result, field.units, 'TODO'
-        ];
-
-        tableRows.push(row);
-    })
-
+    const [formattedResults, errors] = test.formatResults(results, patient);
+    const tableRows = formattedResults.map(r => [r.label, r.value, r.units, r.ref]);
 
     autoTable(doc, {
-        styles: { halign: 'center' },
+        styles: { halign: 'center', font: fontName },
         columnStyles: { 0: { halign: 'left' } },
         head: [tableColumn],
         body: tableRows
