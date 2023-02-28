@@ -39,7 +39,7 @@ function ComputerBar() {
             overflowY='auto'
             className='sidebar-content'
             flexShrink={0}
-            display={{ base: 'none', md: 'block' }} shadow='lg'>
+            display={{ base: 'none', md: 'block' }} shadow='none'>
             <Flex h="20" align="center" mx='8' justify="space-between">
                 <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
                     Logo

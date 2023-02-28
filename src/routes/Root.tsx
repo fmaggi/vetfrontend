@@ -7,17 +7,15 @@ import { Outlet } from "react-router-dom"
 
 export default function Root() {
     return (
-        <Box w='full' bg={useColorModeValue('white', 'gray.700')}>
+        <Box w='full' bg={useColorModeValue('gray.100', 'gray.800')}>
             <Box display={{ md: 'flex' }}>
                 <Sidebar />
                 <Box flex='1' minW='0'>
-                    <Box px={5} mx='auto'>
+                    <Box mx='auto'>
                         <Flex>
                             <Center
                                 minW='0'
-                                flex='auto'
-                                pt='5'
-                                pb='10'>
+                                flex='auto'>
                                     <Outlet />
                             </Center>
                         </Flex>

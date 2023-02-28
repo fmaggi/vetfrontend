@@ -18,7 +18,7 @@ export default function NavItem({ children, to }: NavItemProps) {
             to={to}
             w='100%'
             variant={isActive ? 'solid' : 'ghost'}
-            colorScheme={isActive ? 'green' : 'gray'}
+            colorScheme={isActive ? 'teal' : 'gray'}
         >
             {children}
         </Button>

@@ -14,7 +14,8 @@ import {
     Tab,
     TabPanels,
     TabPanel,
-    Box
+    Box,
+    useColorModeValue
 } from '@chakra-ui/react'
 import saveTestToPDF from '../utils/saveTestToPdf';
 
@@ -44,7 +45,7 @@ export async function action({ request }: ActionLoaderProps) {
 export default function LabTests() {
     const patient = useLoaderData() as string;
     return (
-        <Box w='100%' shadow='none'>
+        <Box w='100%' h='100%' shadow='none' bg={useColorModeValue('white', 'gray.700')} px={5}>
             <Box m={2}>
                 <Heading as='h6'>{patient}</Heading>
             </Box>

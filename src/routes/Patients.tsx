@@ -10,14 +10,14 @@ export async function loader() {
 
 export default function Patients() {
     const patients = useLoaderData() as string[];
-    const bg = useColorModeValue('white', 'gray.800')
+    const bg = useColorModeValue('white', 'gray.700')
 
     return (
         <SimpleGrid w='100%' h='100%' p='5' columns={1} spacing={5}>
             {
                 patients.map(patient => {
                     return (
-                        <Card key={patient} bg={bg} shadow='lg'>
+                        <Card key={patient} bg={bg} shadow='sm'>
                             <CardHeader>
                                 <Heading>{patient}</Heading>
                             </CardHeader>
@@ -26,7 +26,7 @@ export default function Patients() {
                                     <Text>
                                         Muy linda mascota
                                     </Text>
-                                    <Button as={Link} to={`/labs/${patient}`}>Estudio</Button>
+                                    <Button as={Link} to={`/labs/${patient}`} colorScheme='teal'>Estudio</Button>
                                 </Flex>
                             </CardBody>
                         </Card>

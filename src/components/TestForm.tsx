@@ -39,7 +39,7 @@ export default function TestForm({ test, patient, width }: TestFormProps) {
                         <FormControl key={name} isRequired>
                             <FormLabel htmlFor={name}>{label}</FormLabel>
                             <InputGroup>
-                                <Input type='number' name={name} onWheelCapture={e => e.currentTarget.blur()}/>
+                                <Input type='number' name={name} onWheelCapture={e => e.currentTarget.blur()} step='any'/>
                                 <InputRightAddon w='12%'>
                                     <Center w='100%'>
                                         { entry.units }
