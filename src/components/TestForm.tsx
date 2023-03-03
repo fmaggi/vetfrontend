@@ -51,7 +51,7 @@ export default function TestForm({ test, patient, width }: TestFormProps) {
                 })
             }
 
-                <Button type='submit' size='lg' colorScheme='blue'>Listo</Button>
+                <Button type='submit' size='lg' colorScheme='blue'>Generar PDF</Button>
             </VStack>
         </Form>
         </Box>

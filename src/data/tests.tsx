@@ -43,13 +43,12 @@ export class Test {
             }
 
             testResults.push(res);
-
-            if (this.calculateRelativeFields !== undefined) {
-                const relatives = this.calculateRelativeFields(results, patientType);
-                testResults.push(...relatives);
-            }
-
         })
+
+        if (this.calculateRelativeFields !== undefined) {
+            const relatives = this.calculateRelativeFields(results, patientType);
+            testResults.push(...relatives);
+        }
 
         return [testResults, errors];
     }
@@ -118,6 +117,7 @@ const hematologia = new Test('Hematología', [
         units: 'g/dL'
     }
 ]);
+
 
 const tests: Test[] = [
     quimica, hematologia

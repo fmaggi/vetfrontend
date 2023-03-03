@@ -1,8 +1,10 @@
 import React from 'react';
 
-import Root from './routes/Root'
+import Root from './routes/Root';
 import LabTests, { action as savePdf, loader as loadPatient } from './routes/LabTests';
 import Patients, { loader as loadPatients} from './routes/Patients';
+import Home, {} from './routes/Home';
+import Error from './routes/Error';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -12,10 +14,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
-        element: <h1>Hey there!</h1>
+        element: <Home />,
       },
       {
         path: 'labs/:patient',

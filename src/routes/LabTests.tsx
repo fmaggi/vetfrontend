@@ -18,6 +18,7 @@ import {
     useColorModeValue
 } from '@chakra-ui/react'
 import saveTestToPDF from '../utils/saveTestToPdf';
+import {useWindowSize} from "../hooks/window";
 
 interface ActionLoaderProps {
     request?: any,
@@ -44,8 +45,9 @@ export async function action({ request }: ActionLoaderProps) {
 
 export default function LabTests() {
     const patient = useLoaderData() as string;
+    const winSize = useWindowSize();
     return (
-        <Box w='100%' h='100%' shadow='none' bg={useColorModeValue('white', 'gray.700')} px={5}>
+        <Box w='100%' height={winSize.h} shadow='none' bg={useColorModeValue('white', 'gray.700')} px={5}>
             <Box m={2}>
                 <Heading as='h6'>{patient}</Heading>
             </Box>

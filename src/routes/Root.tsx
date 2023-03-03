@@ -4,10 +4,12 @@ import { Box, Flex, useColorModeValue, Center } from "@chakra-ui/react"
 
 import Sidebar from '../components/sidebar'
 import { Outlet } from "react-router-dom"
+import {useWindowSize} from "../hooks/window";
 
 export default function Root() {
+    const winSize = useWindowSize();
     return (
-        <Box w='full' bg={useColorModeValue('gray.100', 'gray.800')}>
+        <Box w={winSize.w} h={winSize.h} bg={useColorModeValue('gray.100', 'gray.800')}>
             <Box display={{ md: 'flex' }}>
                 <Sidebar />
                 <Box flex='1' minW='0'>
