@@ -1,4 +1,4 @@
-import { Box, Text, Button, VStack, Flex, useBreakpointValue, useDisclosure, useColorMode, useColorModeValue, IconButton, Divider } from '@chakra-ui/react'
+import { Box, Text,  VStack, Flex, useBreakpointValue, useColorMode, IconButton } from '@chakra-ui/react'
 import React from 'react'
 
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
@@ -6,8 +6,6 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import NavItem from './NavItem';
 
 export default function Sidebar(): JSX.Element {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
 
     const variant = useBreakpointValue({ base: MobileBar(), md: ComputerBar() })
 

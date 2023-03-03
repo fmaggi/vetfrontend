@@ -1,4 +1,4 @@
-import {Navigate, useNavigate, useRouteError} from "react-router-dom";
+import {useNavigate, useRouteError} from "react-router-dom";
 import {Button, Center, Flex, Heading, VStack} from "@chakra-ui/react";
 import {useWindowSize} from "../hooks/window";
 

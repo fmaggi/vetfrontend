@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react'
+import { Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react'
 import { Link, useLoaderData } from 'react-router-dom'
 
 export async function loader() {

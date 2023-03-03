@@ -6,7 +6,7 @@ import Patients, { loader as loadPatients} from './routes/Patients';
 import Home, {} from './routes/Home';
 import Error from './routes/Error';
 
-import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react'
 

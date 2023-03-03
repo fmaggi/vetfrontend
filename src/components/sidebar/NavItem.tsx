@@ -1,4 +1,4 @@
-import { Link, Button } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { useLocation, Link as RLink } from 'react-router-dom';
 
