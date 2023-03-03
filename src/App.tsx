@@ -6,11 +6,11 @@ import Patients, { loader as loadPatients} from './routes/Patients';
 import Home, {} from './routes/Home';
 import Error from './routes/Error';
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 
 import { ChakraProvider } from '@chakra-ui/react'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Root />,
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       }
     ]
   },
-], {basename:"https://fmaggi.github.io/vetfrontend"});
+]);
 
 function App() {
   return (
