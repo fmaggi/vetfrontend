@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       }
     ]
   },
-], {basename:"https://fmaggi.github.io/vetfrontend"});
+], {basename:"https://fmaggi.github.io/vetfrontend/"});
 
 function App() {
   return (
