@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useLoaderData } from 'react-router-dom'
 
 import TestForm from '../components/TestForm';
@@ -18,7 +16,6 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import saveTestToPDF from '../utils/saveTestToPdf';
-import { useWindowSize } from "../hooks/window";
 
 interface ActionLoaderProps {
   request?: any,
