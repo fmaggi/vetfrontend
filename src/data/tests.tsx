@@ -103,20 +103,31 @@ const hematologia = new Test('Hematología', [
     {
         label: 'Eritrocitos',
         units: 'millones/μL'
-    },
-    {
-        label: 'VCM',
-        units: 'fL'
-    },
-    {
-        label: 'HCM',
-        units: 'pg'
-    },
-    {
-        label: 'CHCM',
-        units: 'g/dL'
     }
-]);
+], (res, patientType) =>
+{
+    return [
+     {
+            label: "VCM",
+            value: res['hematocrito'] / res['eritrocitos'] * 10,
+            units: 'fL',
+            ref: "TODO"
+     },
+    {
+        label: "HCM",
+        value: res['hemoglobina'] / res['eritrocitos'] * 10,
+        units: 'pg',
+        ref: "TODO"
+    },
+    {
+        label: "CHCM",
+        value: res['hemoglobina'] / res['hematocrito'] * 100,
+        units: 'g/dL',
+        ref: "TODO"
+    },
+    ]
+
+});
 
 
 const tests: Test[] = [
