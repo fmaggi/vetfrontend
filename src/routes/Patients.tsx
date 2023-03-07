@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, us
 import { Link, useLoaderData } from 'react-router-dom'
 
 export async function loader() {
-    const patients = [ 'Olivia', 'Alica', 'Romeo', 'Oliver', 'Poncho']
+    const patients = ['Olivia', 'Alica', 'Romeo', 'Oliver', 'Poncho']
     return patients;
 }
 
