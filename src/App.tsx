@@ -4,7 +4,7 @@ import Root from './routes/Root';
 import LabTests, { action as savePdf, loader as loadPatient } from './routes/LabTests';
 import Patients, { loader as loadPatients} from './routes/Patients';
 import Home, {} from './routes/Home';
-import Stats, { loader as loadStats } from './routes/Stats';
+import Stats, {loader as loadStats} from './routes/Stats';
 import Error from './routes/Error';
 
 import { createHashRouter, RouterProvider } from "react-router-dom";
@@ -35,7 +35,16 @@ const router = createHashRouter([
       {
         path: 'estadisticas',
         element: <Stats />,
-        loader: loadStats
+        loader: () => loadStats(-1),
+        children: [
+          {
+            element: <Stats />,
+            path: ":dias",
+            loader: ({ params }) => {
+              loadStats(Number(params.dias));
+            },
+          },
+        ]
       }
     ]
   },

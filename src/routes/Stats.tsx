@@ -1,4 +1,4 @@
-import { useLoaderData} from 'react-router-dom'
+import {useFetcher, useLoaderData} from 'react-router-dom'
 
 
 
@@ -15,38 +15,31 @@ import {
 import tests from "../data/tests";
 import {ChevronDownIcon} from "@chakra-ui/icons";
 
-export async function loader() {
+export /*async*/ function loader(days:number) {
     /*
     fetch(BACKEND).then(res=>res.json());
 
      */
-
-    return tests[0].fields.map(field => {
-        return {
-            name: field.label,
-            value: Math.floor(Math.random() * 10)
-        }
-    });
-}
-
-/*async*/ function loadDays(days: number){
-    /*
-    fetch(BACKEND).then(res=>res.json());
-     */
-
     if(days === -1)
         days = 100;
     return tests[0].fields.map(field => {
         return {
             name: field.label,
-            value: Math.floor(Math.random() * days * 2)
+            value: Math.floor(Math.random() * days)
         }
     });
 }
 
+
 export default function Stats() {
     const data = useLoaderData() as any[];
     const bg = useColorModeValue('white', 'gray.700')
+    const fetcher = useFetcher();
+
+
+    function loadDays(days: number){
+        fetcher.load(`/estadisticas/${days}`);
+    }
 
     return (
 
