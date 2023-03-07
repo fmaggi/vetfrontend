@@ -3,11 +3,14 @@ import { useLoaderData} from 'react-router-dom'
 
 
 import {
-    Box,
-    Center,
-    useColorModeValue
+    Card,
+    CardHeader,
+    Heading,
+    CardBody,
+    Flex,
+    SimpleGrid,
+    Text, useColorModeValue
 } from '@chakra-ui/react'
-import {useWindowSize} from "../hooks/window";
 
 import tests from "../data/tests";
 
@@ -27,20 +30,29 @@ export async function loader() {
 
 export default function Stats() {
     const data = useLoaderData() as any[];
+    const bg = useColorModeValue('white', 'gray.700')
 
-    const winSize = useWindowSize();
     return (
-        <Center h={winSize.h} w='100%' bg={useColorModeValue('white', 'gray.700')}>
+
+        <SimpleGrid w='100%' h='100%' p='5' columns={1} spacing={5}>
             {
                 data.map(test => {
                     return (
-                        <Box>
-                            <h1>{test.name}</h1>
-                            <text>{test.value}</text>
-                        </Box>
-                    )
+                        <Card key={test.name} bg={bg} shadow='sm'>
+                            <CardHeader>
+                                <Heading>{test.name}</Heading>
+                            </CardHeader>
+                            <CardBody>
+                                <Flex align='center' justify='space-between'>
+                                    <Text>
+                                        Cantidad: {test.value}
+                                    </Text>
+                                </Flex>
+                            </CardBody>
+                        </Card>
+                    );
                 })
             }
-        </Center>
+        </SimpleGrid>
     )
 }
