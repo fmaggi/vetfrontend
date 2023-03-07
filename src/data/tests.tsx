@@ -126,7 +126,6 @@ const hematologia = new Test('Hematología', [
         ref: "TODO"
     },
     ]
-
 });
 
 
