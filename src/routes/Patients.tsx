@@ -13,7 +13,7 @@ export default function Patients() {
     const bg = useColorModeValue('white', 'gray.700')
 
     return (
-        <SimpleGrid w='100%' h='100%' p='5' columns={1} spacing={5}>
+        <SimpleGrid w='100%' h='100vh' p='5' columns={1} spacing={5}>
             {
                 patients.map(patient => {
                     return (
