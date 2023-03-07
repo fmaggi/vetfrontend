@@ -48,6 +48,7 @@ function ComputerBar() {
                 <VStack w='100%'>
                     <NavItem to='/'>Home</NavItem>
                     <NavItem to='/pacientes'>Pacientes</NavItem>
+                    <NavItem to='/estadisticas'>Estadisticas</NavItem>
                 </VStack>
             </Flex>
         </Box>
