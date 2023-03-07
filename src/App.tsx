@@ -33,18 +33,10 @@ const router = createHashRouter([
         loader: loadPatients
       },
       {
-        path: 'estadisticas',
+        path: 'estadisticas/:days?',
         element: <Stats />,
-        loader: () => loadStats(-1),
-        children: [
-          {
-            element: <Stats />,
-            path: ":dias",
-            loader: ({ params }) => {
-              loadStats(Number(params.dias));
-            },
-          },
-        ]
+        loader: ({params}) => loadStats(Number(params.days)),
+
       }
     ]
   },
