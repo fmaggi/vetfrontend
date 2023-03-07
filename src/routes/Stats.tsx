@@ -3,6 +3,7 @@ import { useLoaderData} from 'react-router-dom'
 
 
 import {
+    Box,
     Center,
     useColorModeValue
 } from '@chakra-ui/react'
@@ -19,7 +20,7 @@ export async function loader() {
     return tests[0].fields.map(field => {
         return {
             name: field.label,
-            value: Math.random() * 5
+            value: Math.floor(Math.random() * 10)
         }
     });
 }
@@ -33,10 +34,10 @@ export default function Stats() {
             {
                 data.map(test => {
                     return (
-                        <Center>
+                        <Box>
                             <h1>{test.name}</h1>
                             <text>{test.value}</text>
-                        </Center>
+                        </Box>
                     )
                 })
             }
