@@ -46,8 +46,9 @@ function ComputerBar() {
       </Flex>
       <Flex align="center" justifyContent="space-between" direction='column' p='3'>
         <VStack w='100%'>
-          <NavItem to='/'>Home</NavItem>
+          <NavItem to='/'>Pagina Principal</NavItem>
           <NavItem to='/pacientes'>Pacientes</NavItem>
+          <NavItem to='/estadisticas'>Estadistica</NavItem>
         </VStack>
       </Flex>
     </Box>
