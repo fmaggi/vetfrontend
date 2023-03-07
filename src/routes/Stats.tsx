@@ -1,4 +1,4 @@
-import {useFetcher, useLoaderData} from 'react-router-dom'
+import {useFetcher} from 'react-router-dom'
 
 
 
@@ -14,7 +14,7 @@ import {
 
 import tests from "../data/tests";
 import {ChevronDownIcon} from "@chakra-ui/icons";
-import {Key, ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useEffect, useState} from 'react';
+import {useState} from 'react';
 
 export /*async*/ function loader(days: number) {
     /*
