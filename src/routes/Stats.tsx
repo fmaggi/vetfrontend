@@ -21,7 +21,7 @@ export async function loader({ params }: any) {
     fetch(BACKEND).then(res=>res.json());
 
      */
-    var days = Number(params.days);
+    let days = Number(params.days);
     if (Number.isNaN(days) || days === -1)
         days = 100;
     const stats = tests[0].fields.map(field => {
