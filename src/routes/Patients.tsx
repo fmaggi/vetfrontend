@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue, Input, InputGroup, InputLeftElement, InputRightElement, Center } from '@chakra-ui/react'
+import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue, Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
 import { Search2Icon, AddIcon } from '@chakra-ui/icons'
 import { Form, Link, useLoaderData } from 'react-router-dom'
 import getPatients, { Patient } from '../data/patients';
