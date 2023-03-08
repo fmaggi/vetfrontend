@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "https://fmaggi.github.io/vetfrontend/static/js/main.8394ec52.js",
+    "main.js": "https://fmaggi.github.io/vetfrontend/static/js/main.eab5ca07.js",
     "static/js/498.a82a5a26.chunk.js": "https://fmaggi.github.io/vetfrontend/static/js/498.a82a5a26.chunk.js",
     "static/js/703.f202749c.chunk.js": "https://fmaggi.github.io/vetfrontend/static/js/703.f202749c.chunk.js",
     "static/js/513.d3e4123f.chunk.js": "https://fmaggi.github.io/vetfrontend/static/js/513.d3e4123f.chunk.js",
     "static/js/787.ac1ced3c.chunk.js": "https://fmaggi.github.io/vetfrontend/static/js/787.ac1ced3c.chunk.js",
     "index.html": "https://fmaggi.github.io/vetfrontend/index.html",
-    "main.8394ec52.js.map": "https://fmaggi.github.io/vetfrontend/static/js/main.8394ec52.js.map",
+    "main.eab5ca07.js.map": "https://fmaggi.github.io/vetfrontend/static/js/main.eab5ca07.js.map",
     "498.a82a5a26.chunk.js.map": "https://fmaggi.github.io/vetfrontend/static/js/498.a82a5a26.chunk.js.map",
     "703.f202749c.chunk.js.map": "https://fmaggi.github.io/vetfrontend/static/js/703.f202749c.chunk.js.map",
     "513.d3e4123f.chunk.js.map": "https://fmaggi.github.io/vetfrontend/static/js/513.d3e4123f.chunk.js.map",
     "787.ac1ced3c.chunk.js.map": "https://fmaggi.github.io/vetfrontend/static/js/787.ac1ced3c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.8394ec52.js"
+    "static/js/main.eab5ca07.js"
   ]
 }
