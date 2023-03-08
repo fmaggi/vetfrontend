@@ -9,7 +9,7 @@ import { useWindowSize } from "../hooks/window";
 export default function Root() {
     const winSize = useWindowSize();
     return (
-        <Box w={winSize.w} bg={useColorModeValue('gray.100', 'gray.800')}>
+        <Box w={winSize.w} bg={useColorModeValue('gray.200', 'gray.800')}>
             <Box display={{ md: 'flex' }}>
                 <Sidebar />
                 <Box flex='1' minW='0'>
