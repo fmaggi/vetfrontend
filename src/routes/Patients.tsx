@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 
-import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue, Input, FormControl, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
+import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue, Input, InputGroup, InputLeftElement, InputRightElement, Center } from '@chakra-ui/react'
 import { Search2Icon, AddIcon } from '@chakra-ui/icons'
 import { Form, Link, useLoaderData } from 'react-router-dom'
+import getPatients, { Patient } from '../data/patients';
 
 export async function loader() {
-    const patients = ['Olivia', 'Alica', 'Romeo', 'Oliver', 'Poncho']
-    return patients;
+    return getPatients();
 }
 
 export default function Patients() {
-    const patients = useLoaderData() as string[];
+    const patients = useLoaderData() as Patient[];
     const bg = useColorModeValue('white', 'gray.700')
 
     const [filter, setFilter] = useState('')
@@ -41,20 +41,49 @@ export default function Patients() {
                 </Card>
                 {
                     patients.map(patient => {
-                        if (!patient.toLowerCase().startsWith(filter)) {
+                        if (!patient.Nombre.toLowerCase().startsWith(filter)) {
                             return null;
                         }
                         return (
-                            <Card key={patient} bg={bg} shadow='sm'>
+                            <Card key={patient.ID} bg={bg} shadow='sm'>
                                 <CardHeader>
-                                    <Heading>{patient}</Heading>
+                                    <Heading>{patient.Nombre}</Heading>
                                 </CardHeader>
-                                <CardBody>
+                                <CardBody pt={0} px={9}>
                                     <Flex align='center' justify='space-between'>
-                                        <Text>
-                                            Muy linda mascota
-                                        </Text>
-                                        <Button as={Link} to={`/labs/${patient}`} colorScheme='teal'>Estudio</Button>
+                                        <Box>
+                                            <Text color='gray' fontSize='sm' as='i'>
+                                                Especie
+                                            </Text>
+                                            <Text>
+                                                {patient.Especie}
+                                            </Text>
+                                        </Box>
+                                        <Box>
+                                            <Text color='gray' fontSize='sm' as='i'>
+                                                Raza
+                                            </Text>
+                                            <Text>
+                                                {patient.Raza}
+                                            </Text>
+                                        </Box>
+                                        <Box>
+                                            <Text color='gray' fontSize='sm' as='i'>
+                                                Edad
+                                            </Text>
+                                            <Text>
+                                                {patient.Edad}
+                                            </Text>
+                                        </Box>
+                                        <Box>
+                                            <Text color='gray' fontSize='sm' as='i'>
+                                                Sexo
+                                            </Text>
+                                            <Text>
+                                                {patient.Sexo}
+                                            </Text>
+                                        </Box>
+                                        <Button as={Link} to={`/labs/${patient.Nombre}`} colorScheme='teal'>Estudio</Button>
                                     </Flex>
                                 </CardBody>
                             </Card>
