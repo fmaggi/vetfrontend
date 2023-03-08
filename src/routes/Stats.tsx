@@ -14,7 +14,7 @@ import {
 
 import tests from "../data/tests";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 export async function loader({ params }: any) {
     /*
