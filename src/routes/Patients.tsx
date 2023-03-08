@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue, Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react'
+import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue, Input, InputGroup, InputLeftElement, InputRightElement, HStack } from '@chakra-ui/react'
 import { Search2Icon, AddIcon } from '@chakra-ui/icons'
 import { Form, Link, useLoaderData } from 'react-router-dom'
 import getPatients, { Patient } from '../data/patients';
@@ -51,38 +51,40 @@ export default function Patients() {
                                 </CardHeader>
                                 <CardBody pt={0} px={9}>
                                     <Flex align='center' justify='space-between'>
-                                        <Box>
-                                            <Text color='gray' fontSize='sm' as='i'>
-                                                Especie
-                                            </Text>
-                                            <Text>
-                                                {patient.Especie}
-                                            </Text>
-                                        </Box>
-                                        <Box>
-                                            <Text color='gray' fontSize='sm' as='i'>
-                                                Raza
-                                            </Text>
-                                            <Text>
-                                                {patient.Raza}
-                                            </Text>
-                                        </Box>
-                                        <Box>
-                                            <Text color='gray' fontSize='sm' as='i'>
-                                                Edad
-                                            </Text>
-                                            <Text>
-                                                {patient.Edad}
-                                            </Text>
-                                        </Box>
-                                        <Box>
-                                            <Text color='gray' fontSize='sm' as='i'>
-                                                Sexo
-                                            </Text>
-                                            <Text>
-                                                {patient.Sexo}
-                                            </Text>
-                                        </Box>
+                                        <HStack spacing={10}>
+                                            <Box>
+                                                <Text color='gray' fontSize='sm' as='i'>
+                                                    Especie
+                                                </Text>
+                                                <Text>
+                                                    {patient.Especie}
+                                                </Text>
+                                            </Box>
+                                            <Box>
+                                                <Text color='gray' fontSize='sm' as='i'>
+                                                    Raza
+                                                </Text>
+                                                <Text>
+                                                    {patient.Raza}
+                                                </Text>
+                                            </Box>
+                                            <Box>
+                                                <Text color='gray' fontSize='sm' as='i'>
+                                                    Edad
+                                                </Text>
+                                                <Text>
+                                                    {patient.Edad}
+                                                </Text>
+                                            </Box>
+                                            <Box>
+                                                <Text color='gray' fontSize='sm' as='i'>
+                                                    Sexo
+                                                </Text>
+                                                <Text>
+                                                    {patient.Sexo}
+                                                </Text>
+                                            </Box>
+                                        </HStack>
                                         <Button as={Link} to={`/labs/${patient.Nombre}`} colorScheme='teal'>Estudio</Button>
                                     </Flex>
                                 </CardBody>
