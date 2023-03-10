@@ -1,6 +1,26 @@
 import React, { useState } from 'react'
 
-import { Box, Card, CardBody, CardHeader, Heading, Button, Flex, SimpleGrid, Text, useColorModeValue, Input, InputGroup, InputLeftElement, InputRightElement, HStack } from '@chakra-ui/react'
+// ICONO para borrar por si no lo terminamos usando
+import DogIcon from '../data/bxsdog.svg'
+import CatIcon from '../data/bxscat.svg'
+
+import {
+    Box,
+    Card,
+    CardBody,
+    CardHeader,
+    Heading,
+    Button,
+    Flex,
+    SimpleGrid,
+    Text,
+    useColorModeValue,
+    Input,
+    InputGroup,
+    InputLeftElement,
+    InputRightElement,
+    HStack
+} from '@chakra-ui/react'
 import { Search2Icon, AddIcon } from '@chakra-ui/icons'
 import { Form, Link, useLoaderData } from 'react-router-dom'
 import getPatients, { Patient } from '../data/patients';
@@ -47,6 +67,8 @@ export default function Patients() {
                         return (
                             <Card key={patient.ID} bg={bg} shadow='sm'>
                                 <CardHeader>
+                                    {/*ICONO (Para borrar si no lo terminamos usando*/}
+                                    <img src={patient.Especie.toLowerCase() === "perro" ? DogIcon : CatIcon} alt=""/>
                                     <Heading>{patient.Nombre}</Heading>
                                 </CardHeader>
                                 <CardBody pt={0} px={9}>
