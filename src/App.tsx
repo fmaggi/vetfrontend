@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Root from './routes/Root';
+import Login from './routes/Login';
 import LabTests, { action as savePdf, loader as loadPatient } from './routes/LabTests';
 import Patients, { loader as loadPatients } from './routes/Patients';
 import CreatePatient, { action as createPatient } from './routes/CreatePatient';
@@ -23,6 +24,10 @@ const router = createHashRouter([
                 element: <Home />,
             },
             {
+                path: '/login',
+                element: <Login />
+            },
+            {
                 path: 'labs/:patient',
                 element: <LabTests />,
                 loader: loadPatient,
@@ -30,6 +35,7 @@ const router = createHashRouter([
             },
             {
                 path: 'pacientes',
+
                 element: <Patients />,
                 loader: loadPatients
             },
