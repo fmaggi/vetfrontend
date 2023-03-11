@@ -19,8 +19,8 @@ import {
     HStack
 } from '@chakra-ui/react'
 import { Search2Icon, AddIcon } from '@chakra-ui/icons'
-import { CatIcon, DogIcon } from '../components/icons'
-import { Form, Link, useLoaderData } from 'react-router-dom'
+// import { CatIcon, DogIcon } from '../components/icons'
+import { Link, useLoaderData } from 'react-router-dom'
 import getPatients, { Patient } from '../data/patients';
 
 export async function loader() {
@@ -61,7 +61,7 @@ export default function Patients() {
                         return (
                             <Card key={patient.ID} bg={bg} shadow='sm'>
                                 <CardHeader>
-                                    <Heading>{patient.Nombre}  {patient.Especie == 'Perro' ? '🐕' : '🐈'}</Heading>
+                                    <Heading>{patient.Nombre}  {patient.Especie === 'Perro' ? '🐕' : '🐈'}</Heading>
                                     { /* TODO: Choose */}
                                     { /* patient.Especie == 'Perro' ? <DogIcon boxSize='2rem' /> : <CatIcon boxSize='2rem' /> */}
                                 </CardHeader>
