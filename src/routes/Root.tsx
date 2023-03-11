@@ -5,29 +5,28 @@ import { Box, Flex, useColorModeValue, Center } from "@chakra-ui/react"
 import Sidebar from '../components/sidebar'
 import { Outlet } from "react-router-dom"
 import { useWindowSize } from "../hooks/window";
-import AuthProvider from "../components/authentication";
+import { useAuthContext } from "../hooks/authentication";
 
 export default function Root() {
     const winSize = useWindowSize();
+    const authContext = useAuthContext();
     return (
-        <AuthProvider>
-            <Box w={winSize.w} bg={useColorModeValue('gray.200', 'gray.800')}>
-                <Box display={{ md: 'flex' }}>
-                    <Sidebar />
-                    <Box flex='1' minW='0'>
-                        <Box mx='auto'>
-                            <Flex overflow='hidden'>
-                                <Center h={winSize.h}
-                                    overflow='auto'
-                                    minW='0'
-                                    flex='auto'>
-                                    <Outlet />
-                                </Center>
-                            </Flex>
-                        </Box>
+        <Box w={winSize.w} bg={useColorModeValue('gray.200', 'gray.800')}>
+            <Box display={{ md: 'flex' }}>
+                <Sidebar />
+                <Box flex='1' minW='0'>
+                    <Box mx='auto'>
+                        <Flex overflow='hidden'>
+                            <Center h={winSize.h}
+                                overflow='auto'
+                                minW='0'
+                                flex='auto'>
+                                <Outlet context={authContext} />
+                            </Center>
+                        </Flex>
                     </Box>
                 </Box>
             </Box>
-        </AuthProvider>
+        </Box>
     )
 }

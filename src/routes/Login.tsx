@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../components/authentication";
+import { useAuth } from "../hooks/authentication";
 
 export default function Login() {
     const { user, signin } = useAuth();
@@ -26,7 +26,6 @@ export default function Login() {
 
         signin({ user: username }, () => navigate(from, { replace: true }));
     }
-
 
     return (
         <div>

@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from "react"
+import { useState } from "react"
+import { useOutletContext } from "react-router-dom";
 
 interface AuthContextType {
     user: any,
@@ -7,9 +8,7 @@ interface AuthContextType {
     signout: (callback: VoidFunction) => void
 }
 
-const AuthContext = createContext<AuthContextType>(null!);
-
-export default function AuthProvider({ children }: { children: ReactNode }) {
+export function useAuthContext() {
     const [user, setUser] = useState<any>(null);
 
     const signin = (user: any, callback: VoidFunction) => {
@@ -28,10 +27,10 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         signout: signout
     }
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    return value;
 }
 
 export function useAuth() {
-    return useContext(AuthContext);
+    return useOutletContext<AuthContextType>();
 }
 

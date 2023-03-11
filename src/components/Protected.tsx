@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from ".";
+import { useAuth } from "../hooks/authentication";
 
 export default function Protected({ children }: { children: JSX.Element }): JSX.Element {
     const { user } = useAuth();
