@@ -42,9 +42,10 @@ export async function action({ request }: ActionLoaderProps) {
 
 export default function LabTests() {
     const patient = useLoaderData() as string;
+    const bg = useColorModeValue('white', 'gray.700');
     return (
-        <Box w='100%' h='100%' shadow='none' bg={useColorModeValue('white', 'gray.700')}>
-            <Box bg={useColorModeValue('white', 'gray.700')}>
+        <Box w='100%' h='100%' shadow='none' bg={bg}>
+            <Box bg={bg} p='10'>
                 <Box m={2}>
                     <Heading as='h6'>{patient}</Heading>
                 </Box>

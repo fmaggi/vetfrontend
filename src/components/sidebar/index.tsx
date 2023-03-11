@@ -1,4 +1,4 @@
-import { Box, Text, VStack, Flex, useBreakpointValue, useColorMode, IconButton } from '@chakra-ui/react'
+import { Box, Text, VStack, Flex, useColorMode, IconButton } from '@chakra-ui/react'
 import React from 'react'
 
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
@@ -7,13 +7,12 @@ import NavItem from './NavItem';
 
 export default function Sidebar(): JSX.Element {
 
-    const variant = useBreakpointValue({ base: MobileBar(), md: ComputerBar() })
-
     return (
-        variant!
+        <ComputerBar />
     );
 }
 
+/*
 function MobileBar() {
     return (
         <Flex w={{ base: 'full', md: 60 }} bg='blue' direction='column'>
@@ -21,6 +20,7 @@ function MobileBar() {
         </Flex>
     );
 }
+*/
 
 function ComputerBar() {
     const { colorMode, toggleColorMode } = useColorMode();

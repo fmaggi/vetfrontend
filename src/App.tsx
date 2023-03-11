@@ -3,6 +3,7 @@ import React from 'react';
 import Root from './routes/Root';
 import LabTests, { action as savePdf, loader as loadPatient } from './routes/LabTests';
 import Patients, { loader as loadPatients } from './routes/Patients';
+import CreatePatient, { action as createPatient } from './routes/CreatePatient';
 import Home, { } from './routes/Home';
 import Stats, { loader as loadStats } from './routes/Stats';
 import Error from './routes/Error';
@@ -31,6 +32,11 @@ const router = createHashRouter([
                 path: 'pacientes',
                 element: <Patients />,
                 loader: loadPatients
+            },
+            {
+                path: 'pacientes/nuevo',
+                element: <CreatePatient />,
+                action: createPatient
             },
             {
                 path: 'estadisticas/:days?',

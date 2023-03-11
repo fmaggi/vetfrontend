@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 
-// ICONO para borrar por si no lo terminamos usando
-import DogIcon from '../data/bxsdog.svg'
-import CatIcon from '../data/bxscat.svg'
 
 import {
     Box,
@@ -22,6 +19,7 @@ import {
     HStack
 } from '@chakra-ui/react'
 import { Search2Icon, AddIcon } from '@chakra-ui/icons'
+import { CatIcon, DogIcon } from '../components/icons'
 import { Form, Link, useLoaderData } from 'react-router-dom'
 import getPatients, { Patient } from '../data/patients';
 
@@ -48,14 +46,10 @@ export default function Patients() {
                                 />
                                 <Input pr='6.5rem' variant='filled' placeholder='Buscar' value={filter} onChange={e => setFilter(e.target.value.toLowerCase())} />
                                 <InputRightElement w='6.5rem'>
-                                    <Form action='/pacientes/busquedaAvanzada'>
-                                        <Button type='submit' size='sm' colorScheme='blue' variant='ghost'>Avanzado</Button>
-                                    </Form>
+                                    <Button as={Link} to='/pacientes/busquedaAvanzada' size='sm' colorScheme='blue' variant='ghost'>Avanzado</Button>
                                 </InputRightElement>
                             </InputGroup>
-                            <Form action='/paciente/nuevo'>
-                                <Button type='submit' leftIcon={<AddIcon />} colorScheme='teal'>Nuevo Paciente</Button>
-                            </Form>
+                            <Button as={Link} to='/pacientes/nuevo' leftIcon={<AddIcon />} colorScheme='teal'>Nuevo Paciente</Button>
                         </Flex>
                     </CardBody>
                 </Card>
@@ -67,11 +61,11 @@ export default function Patients() {
                         return (
                             <Card key={patient.ID} bg={bg} shadow='sm'>
                                 <CardHeader>
-                                    {/*ICONO (Para borrar si no lo terminamos usando*/}
-                                    <img src={patient.Especie.toLowerCase() === "perro" ? DogIcon : CatIcon} alt=""/>
-                                    <Heading>{patient.Nombre}</Heading>
+                                    <Heading>{patient.Nombre}  {patient.Especie == 'Perro' ? '🐕' : '🐈'}</Heading>
+                                    { /* TODO: Choose */}
+                                    { /* patient.Especie == 'Perro' ? <DogIcon boxSize='2rem' /> : <CatIcon boxSize='2rem' /> */}
                                 </CardHeader>
-                                <CardBody pt={0} px={9}>
+                                <CardBody pt={0}>
                                     <Flex align='center' justify='space-between'>
                                         <HStack spacing={10}>
                                             <Box>
